@@ -59,7 +59,7 @@ public class GitHubTest extends BaseTest{
     }
 
     @Test
-    public void issuesTabTest(){
+    public void validateThatAnUserCanCreateANewIssue(){
         String expectedNewIssueText = "Edit";
         String expectedIssuesTabText = "Label issues and pull requests for new contributors";
         String newIssueCreatedText = "Edit";
@@ -71,8 +71,8 @@ public class GitHubTest extends BaseTest{
         IssuesTab issuesTab = new IssuesTab(driver);
         Assertions.assertEquals(expectedIssuesTabText, issuesTab.getIssuesTabName().getText());
         issuesTab.openNewIssue();
-        CreateNewIssue createNewIssue = new CreateNewIssue(driver);
-        createNewIssue.createNewIssueTab("Lorem, ipsum dolor.", "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, blanditiis.");
+        CreateNewIssuePage createNewIssue = new CreateNewIssuePage(driver);
+        createNewIssue.createANewIssue("Lorem, ipsum dolor.", "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, blanditiis.");
         Assertions.assertEquals(expectedNewIssueText, createNewIssue.getNewIssueTitle().getText());
         NewIssueCreated newIssueCreated = new NewIssueCreated(driver);
         Assertions.assertEquals(newIssueCreatedText, newIssueCreated.getNewIssueCreatedConfirmation().getText());
