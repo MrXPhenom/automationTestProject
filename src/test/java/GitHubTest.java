@@ -72,7 +72,8 @@ public class GitHubTest extends BaseTest{
         Assertions.assertEquals(expectedIssuesTabText, issuesTab.getIssuesTabName().getText());
         issuesTab.openNewIssue();
         CreateNewIssuePage createNewIssue = new CreateNewIssuePage(driver);
-        createNewIssue.createANewIssue("Lorem, ipsum dolor.", "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, blanditiis.");
+        createNewIssue.createANewIssue("Lorem, ipsum dolor.",
+                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, blanditiis.");
         Assertions.assertEquals(expectedNewIssueText, createNewIssue.getNewIssueTitle().getText());
         NewIssueCreated newIssueCreated = new NewIssueCreated(driver);
         Assertions.assertEquals(newIssueCreatedText, newIssueCreated.getNewIssueCreatedConfirmation().getText());
