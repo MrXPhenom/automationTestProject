@@ -1,10 +1,8 @@
 import API.Address;
 import API.BaseApiTest;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import java.io.File;
 import java.util.HashMap;
@@ -15,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.equalTo;
 
-public class APITest extends BaseApiTest {
+public class APITestHomeWork extends BaseApiTest{
 
     String API_key = "f64de71caae815e25c74070ab1aadbd1";
 
@@ -26,17 +24,17 @@ public class APITest extends BaseApiTest {
     public void setReqBody() {
         Map<String, Object> methodProperties = new HashMap<>();
 
-        methodProperties.put("CityName", "м. Київ");
-        methodProperties.put("Limit", 5);
+        methodProperties.put("Warehouse", 1);
+        methodProperties.put("FindByString", "Єрки");
 
         reqBody.put("apiKey", API_key);
         reqBody.put("modelName", "Address");
-        reqBody.put("calledMethod", "searchSettlements");
+        reqBody.put("calledMethod", "getSettlements");
         reqBody.put("methodProperties", methodProperties);
     }
 
     @Test
-    public void validateThatSuccess() {
+    public void validateThatSuccess(){
         given()
                 .spec(requestSpecification)
                 .body(reqBody)
@@ -45,7 +43,6 @@ public class APITest extends BaseApiTest {
                 .post()
                 .then()
                 .spec(responseSpecification)
-                .statusCode(200)
                 .assertThat()
                 .body("success", equalTo(true));
     }
@@ -60,10 +57,9 @@ public class APITest extends BaseApiTest {
                 .post()
                 .then()
                 .spec(responseSpecification)
-                .statusCode(200)
                 .assertThat()
                 .body(matchesJsonSchema(new File(System.getProperty("user.dir") +
-                        "//src/main/resources/validators/np_address_schema.json")));
+                        "//src/main/resources/validators/np_directory_of_settlements_schema.json")));
     }
 
     @Test
@@ -76,15 +72,14 @@ public class APITest extends BaseApiTest {
                 .post()
                 .then()
                 .spec(responseSpecification)
-                .statusCode(200)
                 .assertThat()
                 .body("success", equalTo(true))
-                .body("data[0].Addresses[0].Present", equalTo("м. Київ, Київська обл."))
-                .body("data[0].TotalCount", equalTo(106));
+                .body("data[0].Description", equalTo("Єрки"))
+                .body("data[0].DescriptionTranslit", equalTo("Yerky"));
     }
 
     @Test
-    public void validateKyivIsPresent() {
+    public void validateYerkyIsPresent() {
 
         List<Address> addressList = given()
                 .spec(requestSpecification)
@@ -94,28 +89,8 @@ public class APITest extends BaseApiTest {
                 .post()
                 .then()
                 .spec(responseSpecification)
-                .statusCode(200)
                 .extract()
                 .body().jsonPath().getList("data[0].Address", Address.class);
         System.out.println(addressList);
-    }
-
-    @Test
-    public void testWithPojoUsage() {
-
-        List<Address> addressesData = given()
-                .spec(this.requestSpecification)
-                .when()
-                .contentType(ContentType.JSON)
-                .when()
-                .body(this.reqBody)
-                .post()
-                .then()
-                .spec(responseSpecification)
-                .extract()
-                .body().jsonPath().getList("data[0].Addresses", Address.class);
-
-        System.out.println(addressesData);
-        addressesData.forEach(el -> Assertions.assertTrue(el.getPresent().contains("Київ")));
     }
 }

@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "Ref": {
+              "type": "string"
+            },
+            "SettlementType": {
+              "type": "string"
+            },
+            "Latitude": {
+              "type": "string"
+            },
+            "Longitude": {
+              "type": "string"
+            },
+            "Description": {
+              "type": "string"
+            },
+            "DescriptionRu": {
+              "type": "string"
+            },
+            "DescriptionTranslit": {
+              "type": "string"
+            },
+            "SettlementTypeDescription": {
+              "type": "string"
+            },
+            "SettlementTypeDescriptionRu": {
+              "type": "string"
+            },
+            "SettlementTypeDescriptionTranslit": {
+              "type": "string"
+            },
+            "Region": {
+              "type": "string"
+            },
+            "RegionsDescription": {
+              "type": "string"
+            },
+            "RegionsDescriptionRu": {
+              "type": "string"
+            },
+            "RegionsDescriptionTranslit": {
+              "type": "string"
+            },
+            "Area": {
+              "type": "string"
+            },
+            "AreaDescription": {
+              "type": "string"
+            },
+            "AreaDescriptionRu": {
+              "type": "string"
+            },
+            "AreaDescriptionTranslit": {
+              "type": "string"
+            },
+            "Index1": {
+              "type": "string"
+            },
+            "Index2": {
+              "type": "string"
+            },
+            "IndexCOATSU1": {
+              "type": "string"
+            },
+            "Delivery1": {
+              "type": "string"
+            },
+            "Delivery2": {
+              "type": "string"
+            },
+            "Delivery3": {
+              "type": "string"
+            },
+            "Delivery4": {
+              "type": "string"
+            },
+            "Delivery5": {
+              "type": "string"
+            },
+            "Delivery6": {
+              "type": "string"
+            },
+            "Delivery7": {
+              "type": "string"
+            },
+            "SpecialCashCheck": {
+              "type": "integer"
+            },
+            "Warehouse": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "Ref",
+            "SettlementType",
+            "Latitude",
+            "Longitude",
+            "Description",
+            "DescriptionRu",
+            "DescriptionTranslit",
+            "SettlementTypeDescription",
+            "SettlementTypeDescriptionRu",
+            "SettlementTypeDescriptionTranslit",
+            "Region",
+            "RegionsDescription",
+            "RegionsDescriptionRu",
+            "RegionsDescriptionTranslit",
+            "Area",
+            "AreaDescription",
+            "AreaDescriptionRu",
+            "AreaDescriptionTranslit",
+            "Index1",
+            "Index2",
+            "IndexCOATSU1",
+            "Delivery1",
+            "Delivery2",
+            "Delivery3",
+            "Delivery4",
+            "Delivery5",
+            "Delivery6",
+            "Delivery7",
+            "SpecialCashCheck",
+            "Warehouse"
+          ]
+        }
+      ]
+    },
+    "errors": {
+      "type": "array",
+      "items": {}
+    },
+    "warnings": {
+      "type": "array",
+      "items": {}
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalCount"
+      ]
+    },
+    "messageCodes": {
+      "type": "array",
+      "items": {}
+    },
+    "errorCodes": {
+      "type": "array",
+      "items": {}
+    },
+    "warningCodes": {
+      "type": "array",
+      "items": {}
+    },
+    "infoCodes": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "success",
+    "data",
+    "errors",
+    "warnings",
+    "info",
+    "messageCodes",
+    "errorCodes",
+    "warningCodes",
+    "infoCodes"
+  ]
+}
