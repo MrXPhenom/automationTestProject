@@ -21,6 +21,7 @@ public class BaseApiTest {
                 .build();
         responseSpecification = new ResponseSpecBuilder()
                 .log(LogDetail.ALL)
+                .expectStatusCode(200)
                 .build();
     }
 }
