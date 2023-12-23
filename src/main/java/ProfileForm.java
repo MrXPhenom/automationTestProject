@@ -6,9 +6,10 @@ public class ProfileForm extends BasePage{
     By signOutLocator = By.xpath("//span[contains(text(), 'Sign out')]/parent::a");
     By profileLogoLocator = By.xpath("//*[@id=\"dialog-show-dialog-9aa21dfe-8b03-4575-92e2-95ed238cc307\"]//img");
     By yourRepositButtonLocator = By.xpath("//span[contains(text(), \"Your repositories\")]/parent::a");
+    private final static String TITLE = "Profile form";
 
     public ProfileForm(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public SignOutPage signOutFromGitHub() {

@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GitHubTest extends BaseTest{
+    Logger logger;
 
     @Test
     public void checkLogoOnTheLoginPage() {
@@ -56,6 +59,8 @@ public class GitHubTest extends BaseTest{
         mainPage.goToProfileForm().goToRepositoriesPage();
         RepositoriesPage repositoriesPage = new RepositoriesPage(driver);
         Assertions.assertEquals(expReposList, repositoriesPage.getRepositories());
+        Logger logger = LogManager.getLogger();
+        logger.info("checkRepositoriesList passed successfully");
     }
 
     @Test
