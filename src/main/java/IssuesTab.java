@@ -1,8 +1,10 @@
+import helpers.Level;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static helpers.ColorPrinter.printColorMessage;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class IssuesTab extends BasePage {
@@ -12,13 +14,14 @@ public class IssuesTab extends BasePage {
     private By issuesTab = By.id("issues-tab");
 
     private By issuesTabName = By.xpath("//*[contains(text(), 'Label issues')]");
+    private final static String TITLE = "Issue Tab";
 
     public WebElement getIssuesTabName() {
         return driver.findElement(issuesTabName);
     }
 
     public IssuesTab(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public MainPage openNewIssue() {
@@ -32,6 +35,7 @@ public class IssuesTab extends BasePage {
         Assertions.assertTrue(driver.findElement(issuesTab).isDisplayed());
         webDriverWait.until(elementToBeClickable(driver.findElement(issuesTab)));
         driver.findElement(issuesTab).click();
+        printColorMessage("Issues page opened", logger, Level.INFO);
         return new IssuesTab(driver);
     }
 }
